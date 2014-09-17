@@ -1,4 +1,7 @@
 class StaticPagesController < ApplicationController
+  def about
+  end
+
   def hello
     render text: "Welcome to the SampleApp!"
   end      
