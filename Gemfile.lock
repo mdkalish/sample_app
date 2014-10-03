@@ -30,11 +30,17 @@ GEM
     ansi (1.4.3)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
+    binding_of_caller (0.7.3.pre1)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.10)
       will_paginate
     builder (3.2.2)
+    byebug (3.4.0)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -50,6 +56,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    columnize (0.8.9)
+    debug_inspector (0.0.2)
+    debugger-linecache (1.2.0)
     erubis (2.7.0)
     excon (0.39.5)
     execjs (2.2.1)
@@ -208,6 +217,11 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    web-console (2.0.0.beta3)
+      activemodel (~> 4.0)
+      binding_of_caller (= 0.7.3.pre1)
+      railties (~> 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
     will_paginate (3.0.7)
 
 PLATFORMS
@@ -217,6 +231,7 @@ DEPENDENCIES
   bcrypt (= 3.1.7)
   bootstrap-sass (= 3.2.0.0)
   bootstrap-will_paginate (= 0.0.10)
+  byebug (= 3.4.0)
   carrierwave (= 0.10.0)
   coffee-rails (= 4.0.1)
   faker (= 1.4.2)
@@ -237,4 +252,5 @@ DEPENDENCIES
   turbolinks (= 2.2.2)
   uglifier (= 2.5.1)
   unicorn (= 4.8.3)
+  web-console (= 2.0.0.beta3)
   will_paginate (= 3.0.7)
