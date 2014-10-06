@@ -29,12 +29,10 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                             email: "user@valid.test",
                                             password:              "fooeight",
                                             password_confirmation: "fooeight"}                                            
-    end
+    end    
     assert_template 'users/show'
+    assert is_logged_in?
     assert_not flash.nil?
   end
 
-  test "show proper error messages" do
-
-  end
 end
