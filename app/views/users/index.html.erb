@@ -1,0 +1,28 @@
+<% provide(:title, "All users") %>
+<h1>All users</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @users %> 
+</ul>
+
+<%= will_paginate %>
+
+<!--
+<%= render @users %> 
+
+Here Rails infers that @users is a list of User objects; moreover, when called
+with a collection of users, Rails automatically iterates through them and
+renders each one with the _user.html.erb partial.
+
+Thus is equals:
+
+<% @users.each do |user| %>
+  <%= render user %>
+<% end %>
+
+In the loop above, because user is an object of the User class, 
+(check index method in users controller)
+the render method will automatically look for a partial _user.html.erb
+-->

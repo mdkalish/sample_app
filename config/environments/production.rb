@@ -24,7 +24,11 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
+  # maciej http://guides.rubyonrails.org/asset_pipeline.html 
+  # The sass-rails gem is automatically used for CSS compression
+  # if included in Gemfile and thus the following codeline is not set.
   # config.assets.css_compressor = :sass
+  # /maciej
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false

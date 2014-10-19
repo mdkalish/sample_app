@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # 8.1: Session rules:
   get     'login'   =>  'sessions#new'
   post    'login'   =>  'sessions#create'
-  delete  'logout'  =>  'sessions#destroy'
+  delete  'logout'  =>  'sessions#destroy'  
   # 7.1.2:
   resources :users
   
