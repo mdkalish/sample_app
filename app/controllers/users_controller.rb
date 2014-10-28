@@ -10,11 +10,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page])
   end
 
   def show
     @user = User.find(params[:id])
+    # Exercise 10.5.2:
+    redirect_to root_url and return unless @user.activated == true
     #debugger
   end
 
@@ -25,18 +27,24 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user # log_in from application_controller.rb
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user # same as redirect_to user_url(@user)
+      @user.send_activation_email
+      # deposed by the preceding line:
+      # UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
+      # Outdated by introduction of mailer (Listing 10.19):
+      # log_in @user # log_in from application_controller.rb
+      # flash[:success] = "Welcome to the Sample App!"
+      # redirect_to @user # same as redirect_to user_url(@user)
     else
       render 'new'
     end
   end
 
-  def edit        
+  def edit
   end
 
-  def update    
+  def update
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -48,7 +56,7 @@ class UsersController < ApplicationController
   private
   # defining the so-called strong parameters
     def user_params
-      params.require(:user).permit(:name, :email, :password, 
+      params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
                                    # mind the absence of :admin here!
     end
@@ -74,5 +82,4 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to root_url unless current_user.admin?
     end
-
 end

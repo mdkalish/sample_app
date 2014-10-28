@@ -1,4 +1,10 @@
-Rails.application.routes.draw do    
+Rails.application.routes.draw do
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
+  get 'account_activations/edit'
+
   root                  'static_pages#home'
   get     'help'    =>  'static_pages#help'
   get     'about'   =>  'static_pages#about'
@@ -7,11 +13,17 @@ Rails.application.routes.draw do
   # 8.1: Session rules:
   get     'login'   =>  'sessions#new'
   post    'login'   =>  'sessions#create'
-  delete  'logout'  =>  'sessions#destroy'  
+  delete  'logout'  =>  'sessions#destroy'
   # 7.1.2:
   resources :users
-  
-  
+  # 10.1.1:
+  resources :account_activations, only: [:edit]
+  # generates edit_account_activation_url/_path
+  # 10.1.2, Listing 10.35:
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+  # generates new_password_reset_path
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
